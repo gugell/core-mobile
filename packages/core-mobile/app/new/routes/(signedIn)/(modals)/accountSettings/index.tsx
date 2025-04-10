@@ -29,10 +29,7 @@ import { useDeleteWallet } from 'common/hooks/useDeleteWallet'
 import { UserPreferences } from 'features/accountSettings/components/UserPreferences'
 import { About } from 'features/accountSettings/components/About'
 import { AppAppearance } from 'features/accountSettings/components/AppAppearance'
-import {
-  selectIsPrivacyModeEnabled,
-  togglePrivacyMode
-} from 'store/settings/securityPrivacy'
+import { selectIsPrivacyModeEnabled } from 'store/settings/securityPrivacy'
 import {
   selectIsDeveloperMode,
   toggleDeveloperMode
@@ -42,6 +39,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { selectContacts } from 'store/addressBook'
 import { Space } from 'components/Space'
 import { showSnackbar } from 'common/utils/toast'
+import { onTokenExpired } from 'seedless/store/slice'
 
 const AccountSettingsScreen = (): JSX.Element => {
   const { deleteWallet } = useDeleteWallet()
@@ -82,7 +80,7 @@ const AccountSettingsScreen = (): JSX.Element => {
         }}>
         <VisibilityBarButton
           isPrivacyModeEnabled={isPrivacyModeEnabled}
-          onPress={() => dispatch(togglePrivacyMode())}
+          onPress={() => dispatch(onTokenExpired)}
         />
       </View>
     )

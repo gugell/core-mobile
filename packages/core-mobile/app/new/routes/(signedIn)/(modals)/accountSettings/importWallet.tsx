@@ -70,7 +70,7 @@ const ImportWalletScreen = (): JSX.Element => {
 
     const handleImportLedger = (): void => {
       // @ts-ignore TODO: make routes typesafe
-      navigate({ pathname: '/accountSettings/ledger/enhancedSetup' })
+      navigate({ pathname: '/accountSettings/ledger' })
     }
 
     const baseData = [
@@ -123,7 +123,7 @@ const ImportWalletScreen = (): JSX.Element => {
           </Text>
         ),
         leftIcon: (
-          <Icons.Device.Encrypted
+          <Icons.Custom.Ledger
             color={colors.$textPrimary}
             width={24}
             height={24}

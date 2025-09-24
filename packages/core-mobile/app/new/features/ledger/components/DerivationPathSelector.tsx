@@ -59,9 +59,10 @@ const ListItem: React.FC<ListItemProps> = ({ text, type, isFirst = false }) => {
         })}
       />
       <Text
-        variant="body2"
+        variant="subtitle2"
         style={{
-          color: colors.$textSecondary,
+          color: colors.$textPrimary,
+          lineHeight: 18,
           marginLeft: type === 'consideration' ? 4 : 0
         }}>
         {text}
@@ -91,7 +92,8 @@ const OptionCard: React.FC<OptionCardProps> = ({ option, onPress }) => {
       }}>
       <View
         style={{
-          padding: 22,
+          padding: 16,
+          paddingBottom: 12,
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
@@ -112,12 +114,26 @@ const OptionCard: React.FC<OptionCardProps> = ({ option, onPress }) => {
           <View
             style={{
               display: 'flex',
-              flexDirection: 'column'
+              flexDirection: 'column',
+              gap: 4
             }}>
-            <Text variant="heading6" style={{ color: colors.$textPrimary }}>
+            <Text
+              variant="subtitle1"
+              style={{
+                color: colors.$textPrimary,
+                fontWeight: '500',
+                fontSize: 16,
+                lineHeight: 16
+              }}>
               {option.title}
             </Text>
-            <Text variant="body2" style={{ color: colors.$textSecondary }}>
+            <Text
+              variant="caption"
+              style={{
+                color: colors.$textSecondary,
+                fontSize: 12,
+                lineHeight: 15
+              }}>
               {option.subtitle}
             </Text>
           </View>
@@ -138,7 +154,13 @@ const OptionCard: React.FC<OptionCardProps> = ({ option, onPress }) => {
       />
 
       <View style={{ paddingTop: 12, paddingStart: '15%' }}>
-        <Text variant="body2" style={{ color: colors.$textSecondary }}>
+        <Text
+          variant="caption"
+          style={{
+            color: colors.$textSecondary,
+            fontSize: 12,
+            lineHeight: 15
+          }}>
           Benefits
         </Text>
         {option.benefits.map((benefit, index) => (
@@ -154,7 +176,13 @@ const OptionCard: React.FC<OptionCardProps> = ({ option, onPress }) => {
       {option.warnings.length > 0 && (
         <View
           style={{ paddingTop: 12, paddingStart: '15%', paddingBottom: 12 }}>
-          <Text variant="body2" style={{ color: colors.$textSecondary }}>
+          <Text
+            variant="caption"
+            style={{
+              color: colors.$textSecondary,
+              fontSize: 12,
+              lineHeight: 15
+            }}>
             Considerations
           </Text>
           {option.warnings.map((warning, index) => (
@@ -175,9 +203,9 @@ const derivationPathOptions: DerivationPathOption[] = [
   {
     type: LedgerDerivationPathType.BIP44,
     title: 'BIP44',
-    subtitle: 'Standard approach for most users',
+    subtitle: 'Recommended for most users',
     benefits: [
-      'Faster setup (~15 seconds)',
+      'Faster setup, about 15 seconds',
       'Create new accounts without device',
       'Industry standard approach',
       'Better for multiple accounts'
@@ -216,7 +244,7 @@ export const DerivationPathSelector: React.FC<DerivationPathSelectorProps> = ({
         gap: 16,
         paddingBottom: 100
       }}>
-      <View style={{ marginTop: 16 }} />
+      <View style={{ marginTop: 8 }} />
 
       {derivationPathOptions.map(option => (
         <OptionCard
